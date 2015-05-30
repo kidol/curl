@@ -1,0 +1,29 @@
+{
+    "name": "kidol/curl",
+    "description": "Object orientated wrapper for the PHP cURL extension.",
+    "homepage": "https://github.com/kido/curl",
+    "keywords": [
+        "curl",
+		"http client",
+		"http request",
+		"yii2"
+    ],
+    "authors": [
+        {
+            "name": "keyboard.idol"
+        }
+    ],
+    "version": "1.0.0",
+    "require": {
+        "php": ">=5.4.0",
+        "ext-curl": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "kidol\\curl\\": "src/"
+        }
+    }
+}
