@@ -1,16 +1,17 @@
 Documentation
 =============
 
-* [Known limitations](#known-limitations)
+* [Known issues](#known-issues)
 * [Creating a request object](#creating-a-request-object)
 * [Sending a request](#sending-a-request)
 * [Handling failed requests](#handling-failed-requests)
 
-Known limitations
------------------
+Known issues
+------------
 
-- Only basic POST support (form data).
+- No POST support at the moment.
 - Exposes the underlying curl handle, but will currently reset any option set with `curl_setopt()`.
+- Needs more documentation and code comment.
 
 Creating a request object
 -------------------------

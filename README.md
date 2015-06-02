@@ -8,10 +8,10 @@ Links
 
 * [Installation](docs/installation.md)
 * [Documentation](docs/documentation.md)
-	* [Known limitations](docs/documentation#known-limitations)
-	* [Creating a request object](docs/documentation#creating-a-request-object)
-	* [Sending a request](docs/documentation#sending-a-request)
-	* [Handling failed requests](docs/documentation#handling-failed-requests)
+	* [Known issues](docs/documentation.md#known-issues)
+	* [Creating a request object](docs/documentation.md#creating-a-request-object)
+	* [Sending a request](docs/documentation.md#sending-a-request)
+	* [Handling failed requests](docs/documentation.md#handling-failed-requests)
 * [Yii 2 integration](docs/yii2-integration.md)
 
 Small usage example

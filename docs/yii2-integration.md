@@ -3,7 +3,7 @@ Yii 2 integration
 
 ### Installation
 
-Now add the component to your configuration:
+Add the component to your configuration:
 
 ```php
 'components' => [
