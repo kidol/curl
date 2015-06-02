@@ -69,6 +69,9 @@ class CurlRequest
         }
 
         curl_setopt_array($this->handle, [
+            
+            // TODO: Make configurable
+            CURLOPT_ENCODING => 'gzip,deflate',
 
             CURLOPT_URL => $config->url,
             
