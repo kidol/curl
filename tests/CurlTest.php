@@ -42,7 +42,7 @@ class CurlTest extends \PHPUnit_Framework_TestCase
             shell_exec("kill {$this->pid}");
         }
     }
-    
+
     public function testMethod()
     {
         $response = (new CurlRequest([

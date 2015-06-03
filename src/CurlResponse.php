@@ -17,6 +17,7 @@ class CurlResponse extends Object
      * @property integer $errorNumber The error number of the underlying curl resource.
      * @property integer $effectiveUrl The last visited url.
      * @property integer $httpCode The returned http code.
+     * @property integer $contentLength The size of the content according to the "Content-Length" http header.
      * @property string $headers The returned http headers.
      * @property string $content The returned content.
      */
@@ -85,6 +86,11 @@ class CurlResponse extends Object
     public function getHttpCode()
     {
         return curl_getinfo($this->handle, CURLINFO_HTTP_CODE);
+    }
+    
+    public function getContentLength()
+    {
+        return curl_getinfo($this->handle, CURLINFO_CONTENT_LENGTH_DOWNLOAD);
     }
     
     public function getHeaders()
