@@ -269,7 +269,7 @@ class CurlConfig extends Object
         if ($value === null) {
             $this->_proxyInfo = null;
         } else {
-            if (!preg_match("#^(?<protocol>https?|socks)://((?<login>[^:]+:[^:]+)@)?(?<ip>[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}):(?<port>[0-9]{1,5})/?$#", $value, $match)) {
+            if (!preg_match("#^(?<protocol>https?|socks)://((?<login>[^:]+:[^:]+)@)?(?<ip>[^:]+):(?<port>[0-9]{1,5})/?$#", $value, $match)) {
                 throw new InvalidConfigException("CurlConfig::\$proxy should have the following format: <protocol>://[<username>:<password>@]<ip>:<port>");
             }
             $this->_proxyInfo = [
