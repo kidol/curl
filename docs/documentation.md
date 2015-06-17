@@ -10,8 +10,9 @@ Known issues
 ------------
 
 - No POST support at the moment.
-- Exposes the underlying curl handle, but will currently reset any option set with `curl_setopt()`.
+- Exposes the underlying curl handle, but will currently reset any option set with `curl_setopt()`. Maybe add 'native' config property?
 - Needs more documentation and code comment.
+- Tests incomplete.
 
 Creating a request object
 -------------------------
@@ -87,7 +88,7 @@ If a requests fails, by default one the following exceptions will be thrown:
 
 Each exception extends from `CurlRequestException` which provides a `$response` property that holds the related `CurlResponse` object. You can use it for further processing. For example, even if a request timed out, you might still be able to get the returned http code.
 
-Also, the `$code` property of the first two exceptions holds the underlying curl error code as returned by `curl_errno()`.
+Also, the `$code` property of the first four exceptions holds the underlying curl error code as returned by `curl_errno()`.
 
 Example:
 
@@ -101,7 +102,7 @@ try {
 
 ### Without exceptions
 
-You can disable all `send()` related exceptions by setting `throwException` to `false`. You can then use one of the following properties of the `CurlResponse` object to check whether the request failed:
+You can disable all `send()` related exceptions by setting `$throwException` to `false`. You can then use one of the following properties of the `CurlResponse` object to check whether the request failed:
 
 - `$failed` - Same as `RequestFailedException`.
 - `$timedOut` - Same as `RequestTimedOutException`.
@@ -125,7 +126,7 @@ if ($reponse->failed) {
 
 ### Optional: With a retry handler
 
-You can configure `$retryHandler` to retry a failed request. It works for the `RequestFailedException` & `RequestTimedOutException` scenario (note: `throwException` does not have to be enabled).
+You can configure `$retryHandler` to retry a failed request. It works for the `RequestFailedException` & `RequestTimedOutException` scenario (note: `$throwException` does not have to be enabled).
 
 The retry handler must be a `callable` and have the following signature:
 
@@ -148,8 +149,9 @@ Example:
 $request = new CurlRequest([
     'http://example.com/very-unreliable-host-we-access-here',
     'retryHandler' => function($config, $response, $retryCount, $timeSpend) {
-        // Retry up to 3 times
+        // Retry up to 3 times with some pause in between
         if ($retryCount <= 3) {
+			sleep(5);
             return true;
         }
     },

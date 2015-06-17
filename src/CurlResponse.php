@@ -17,9 +17,9 @@ class CurlResponse extends Object
      * @property integer $errorNumber The error number of the underlying curl resource.
      * @property integer $effectiveUrl The last visited url.
      * @property integer $httpCode The returned http code.
-     * @property integer $contentLength The size of the content according to the "Content-Length" http header.
-     * @property string $headers The returned http headers.
-     * @property string $content The returned content.
+     * @property integer $contentLength The size of the response content according to the "Content-Length" http header.
+     * @property string $headers The returned http headers. Is null if not available (that is, if the request failed).
+     * @property string $content The returned content. Is null if not available (that is, if the request failed).
      */
     
     protected $handle;
@@ -95,12 +95,12 @@ class CurlResponse extends Object
     
     public function getHeaders()
     {
-        return substr($this->result, 0, curl_getinfo($this->handle, CURLINFO_HEADER_SIZE));
+        return $this->getFailed() ? null : substr($this->result, 0, curl_getinfo($this->handle, CURLINFO_HEADER_SIZE));
     }
     
     public function getContent()
     {
-        return (string)substr($this->result, curl_getinfo($this->handle, CURLINFO_HEADER_SIZE));
+        return $this->getFailed() ? null : (string)substr($this->result, curl_getinfo($this->handle, CURLINFO_HEADER_SIZE));
     }
     
 }

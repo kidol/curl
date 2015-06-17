@@ -49,8 +49,7 @@ class CurlRequest
             curl_reset($this->handle);
         }
 
-        if (!empty($config->cookies)) {
-            
+        if (!empty($config->cookies)) { 
             curl_setopt($this->handle, CURLOPT_COOKIE, http_build_query($config->cookies, '', '; ', PHP_QUERY_RFC3986));
         }
 
